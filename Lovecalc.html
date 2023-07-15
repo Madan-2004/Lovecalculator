@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Love Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+
+        #maincontainer p{
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        #percentage{
+            color: red;
+        }
+
+        #displaynames{
+            color: red;
+        }
+
+        #resultcontainer{
+            text-align: center;
+        }
+
+        #description{
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 500;
+            margin: 40px;
+        }
+
+        .form-label{
+            font-weight: 500;
+        }
+
+        .container{
+            margin-top: 40px;
+        }
+
+        .btn.btn-secondary.button:hover{
+            background-color: rgb(19, 21, 22);
+            border: 1px solid white;
+            transition: 0.5 ease-in-out;
+            border-radius: 5px;
+            box-shadow: 0 0 26px 1px rgb(108,117,125);
+            color: aquamarine;
+        }
+
+        body{
+            background-image: linear-gradient(to right, #ffafbd , #ffc3a0);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="maincontainer">
+        <h1 style="text-align: center;">&#10084; The Love Calculator &#10084;</h1>
+        <h3 style="text-align: center; margin: 20px;">Welcome to this great invention of doctor Love!</h3>
+        <p>We all know that a name can tell a lot about a person. Names are not randomly chosen: They all have a meaning.</p>
+        <p>Sometimes, you'd like to know if a relationship with someone could work out. Therefore, Doctor Love 
+            himself created this great machine for you. 
+        </p>
+        <p>The Love Calculator is an effective way to get an impression of what the chances are on a relationship between two people.</p>
+        <p>To find out what the chances for you and your dream partner are, just fill in both full names(both first and last name) in the two text boxes below and press Calculate.</p>
+        <p>Please enter the two names to be analyzed:</p>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3">
+                <label for="name" class="form-label">Name of person 1</label>
+                <input type="text" id="person1" placeholder="name of first person" class="form-control" value=""/> 
+            </div>
+        
+            <div class="col-3">
+                <label for="name" class="form-label">Name of person 2</label>
+                <input type="text" id="person2" placeholder="name of second person" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3 m-2">
+                <button type="button" value="submit" class="btn btn-secondary button" onclick="calculate()">Calculate</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="resultcontainer" style="display: none;">
+        <h2>Love Calculator Results!</h2>
+        <h4>These are the results of the calculations by Doctor Love!</h4>
+        <h3 id="displaynames"></h3>
+        <h1 id="percentage"></h1>
+        <div id="description"></div>
+        <button class="btn btn-secondary button" onclick="mainPage()">Calculate Again!</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        var main=document.getElementById("maincontainer");
+        var result=document.getElementById("resultcontainer");
+        function mainPage(){
+            main.style.display="block";
+            result.style.display="none";
+            document.getElementById("person1").value="";
+            document.getElementById("person2").value="";
+        }
+        function calculate() {
+            var n=Math.random();
+            n=Math.floor(n*100) + 1;
+            var person1=document.getElementById("person1").value;
+            var person2=document.getElementById("person2").value;
+            if(person1!="" && person2!=""){
+                main.style.display="none";
+                result.style.display="block";
+                document.getElementById("displaynames").innerHTML = person1 + " &#10084; " + person2;
+                document.getElementById("displaynames").style.color="red";
+                document.getElementById("percentage").innerHTML = n + " %";
+                document.getElementById("percentage").style.color="red";
+                if(n<=15){
+                    document.getElementById("description").innerHTML="Sorry, but your love is as likely to bear fruit as a mango tree planted on an Antarctic glacier.";
+                }
+                else if(n>15 && n<=30){
+                    document.getElementById("description").innerHTML="Your love is like that which a parent with a newborn baby feels for sleep – distant and beyond consideration.";
+                }
+                else if(n>30 && n<=50){
+                    document.getElementById("description").innerHTML="Love like this can be seen in the eyes of a dog wanting to continue playing fetch with its exhausted owner – longing, yet not currently viable.";
+                }
+                else if(n>50 && n<=80){
+                    document.getElementById("description").innerHTML="Good enough. Might as well check love off your list of things society believes you should've accomplished by now.";
+                }
+                else if(n>80 && n<=100){
+                    document.getElementById("description").innerHTML="Your love burns as hot as the sun, blazing through the vastness of space, and searing itself into your being.";
+                }
+            }
+            else{
+                alert('Please enter names!');
+            }
+        }
+
+    </script>
+  </body>
+</html>
